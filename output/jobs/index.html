@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>RealityStream - Jobs Reality-or-Fiction Output</title>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript" src="/localsite/js/d3.v5.min.js" id="/localsite/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="/localsite/js/localsite.js?showheader=true"></script>
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+<script type="text/javascript" src="/localsite/js/earthscape.js" id="/localsite/js/earthscape.js"></script>
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css">
+<link type="text/css" rel="stylesheet" href="/localsite/css/base.css" id="/localsite/css/base.css">
+<link type="text/css" rel="stylesheet" href="/localsite/css/base-tabulator.css" id="/localsite/css/base-tabulator.css">
+
+<script>
+loadMarkdown("README.md", "readmeDiv", "_parent");
+loadMarkdown("CV-LogisticRegression_accuracy.md", "cv_lrDiv", "_parent");
+loadMarkdown("TFIDF-LogisticRegression_accuracy.md", "tfidf_lrDiv", "_parent");
+loadMarkdown("CV-RandomForestClassifier_accuracy.md", "tfidf_lrDiv", "_parent");
+loadMarkdown("TFIDF-SVC_accuracy.md", "tfidf_svcDiv", "_parent");
+
+
+</script>
+
+<style>
+hr {
+  border: 0px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+.tabulator-cell {
+  text-align: right;
+}
+.tabulator-cell:nth-child(1) {
+  min-width: 100px;
+}
+/* Odd:  Why does this need to be 3 rather than 2? */
+.tabulator-cell:nth-child(3) {
+  text-align: left;
+  min-width: 300px;
+  max-width: 587px;
+}
+
+</style>
+<script>
+  let my = {};
+  let myDataroot = "";
+  my.dataset = myDataroot + "CV-LogisticRegression.csv";
+  my.elementID = "earthscape1";
+  loadEarthScape(my);
+
+  my = {};
+  my.dataset = myDataroot + "TFIDF-LogisticRegression.csv";
+  my.elementID = "earthscape2";
+  loadEarthScape(my);
+
+  /* Mostly redundant, so we hide to keep the page shorter. */
+  /*
+  my = {};
+  my.dataset = myDataroot + "CV-RandomForestClassifier.csv";
+  my.elementID = "earthscape3";
+  loadEarthScape(my);
+
+  my = {};
+  my.dataset = myDataroot + "TFIDF-SVC.csv";
+  my.elementID = "earthscape4";
+  loadEarthScape(my);
+  */
+</script>
+
+<style>
+</style>
+</head>
+
+<body>
+
+<div class="content contentpadding">
+  <div id="readmeDiv"></div>
+
+  Accuracy Reports
+
+  <!--Logistic Regression (CV)<br>-->
+  <div id="cv_lrDiv"></div>
+  
+  <!--Logistic Regression (TFIDF)<br>-->
+  <div id="tfidf_lrDiv"></div>
+
+  <!--Random Forest Classification<br>-->
+  <div id="cv_rfcDiv"></div>
+
+  <!--Support Vector Classification<br>-->
+  <div id="tfidf_svcDiv"></div>
+
+  <h2>Predictions</h2>
+
+  The resulting .csv prediction files are almost identical since the accuracy range is from 98% to 99%. Only a few of the Prediction column values differ.<br><br>
+
+  <b>Logistic Regression (CV)</b><br>
+  <div id="earthscape1" style="overflow-x: auto;"></div><br>
+  
+  <b>Logistic Regression (TFIDF)</b><br>
+  <div id="earthscape2" style="overflow-x: auto;"></div><br>
+
+  <a href="../../">Return to RealityStream</a>
+</div>
+
+</body>
+</html>
